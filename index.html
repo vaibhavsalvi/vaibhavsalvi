@@ -1,6 +1,20 @@
 <!DOCTYPE html>
 <html>
-<body>
+<head>
+<script>//The importance of placing the script tags at the bottom
+var thinkGlobal=true; //Global. Declared with var but outside the function
+function scopeTest()
+{
+ var thinkLocal=true; //Local, Declared with var inside the function
+ thinkLocal=false; // This assignment should have given a defined value to the alert outside the function, but it doesnt
+ alert(this);
+ alert(thinkGlobal);
+}
+alert(thinkGlobal);//Note this function alerts before the alert in function
+alert(thinkLocal);//Exception
+</script>
+</head>
+<body onload="scopeTest()">
 <h1>Hello World</h1>
 <p>Work in Progress.</p>
 </body>

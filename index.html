@@ -1,21 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script>
+//Jquery script needs to be loaded first, reference to $ can be ambiguous if other plug-ins have a named reference conflicting with $
+//http://stackoverflow.com/questions/2194992/jquery-is-not-defined
+$(document).ready(function () {
+  
+  $( "#button" ).click(function() {
+  alert($("#fname").val());
+     sayMyName( $("#fname").val());
+});
+//alert('Called Javascript');
+});
+
+</script>
+<script src="Closure.js"></script>
 <script>//The importance of placing the script tags at the bottom
 var thinkGlobal=true; //Global. Declared with var but outside the function
 function scopeTest()
 {
  var thinkLocal=true; //Local, Declared with var inside the function
- thinkLocal=false; // This assignment should have given a defined value to the alert outside the function, but it doesnt
- alert(this);
+ thinkLocal=false; //  assignment should have given a defined value to the alert outside the function, but it doesnt
+ alert(this); // "this" is it the calling function hence window.
  alert(thinkGlobal);
+ 
 }
 alert(thinkGlobal);//Note this function alerts before the alert in function
-alert(thinkLocal);//Exception
+//alert(thinkLocal);//Exception if uncommented
 </script>
 </head>
 <body onload="scopeTest()">
 <h1>Hello World</h1>
 <p>Work in Progress.</p>
+<Input type ="text" id="fname" name="firstName"/>
+<Input id="button" type="Submit" Value="Submit" />
+
 </body>
 </html>

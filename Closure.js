@@ -1,9 +1,11 @@
-function sayMyName(firstName)
+function AddToSeed( seedValue)
 {
-alert(firstName);
-     function closure()
+     alert(this + " - This in context function ");
+     var returnFunction=function closure(addValue)
      {
-        alert('My name is' + firstName);  //using this will not work here
+         alert(this + " - This in closure ");
+         seedValue = parseInt(seedValue) + parseInt(addValue);  // Change Value Context and at each run it will have a different value
+         alert(" New Seed Value now is " + seedValue);
      }
-     closure();
+     return returnFunction;
 }

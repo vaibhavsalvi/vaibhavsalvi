@@ -10,30 +10,33 @@ $(document).ready(function () {
   
   $( "#button" ).click(function() {
   alert($("#fname").val());
-     sayMyName( $("#fname").val());
+  var addToInput = AddToSeed($("#fname").val());
+  addToInput(1);
+  addToInput(1);
 });
 //alert('Called Javascript');
 });
 
 </script>
 <script src="Closure.js"></script>
-<script>//The importance of placing the script tags at the bottom
-var thinkGlobal=true; //Global. Declared with var but outside the function
+<script>                                        //The importance of placing the script tags at the bottom
+var globalScope=true;                           //Global. Declared with var but outside the function
 function scopeTest()
 {
- var thinkLocal=true; //Local, Declared with var inside the function
- thinkLocal=false; //  assignment should have given a defined value to the alert outside the function, but it doesnt
- alert(this); // "this" is it the calling function hence window.
- alert(thinkGlobal);
+ var localScope=true;                           //Local, Declared with var inside the function
+ implicitGlobalScope=true;                      //  assignment should have given a defined value to the alert outside the function, but it doesnt
+ alert(this + "this object inside the function" ); // "this" is it the calling function hence window.
+ alert(localScope + "should be true");
  
 }
-alert(thinkGlobal);//Note this function alerts before the alert in function
-//alert(thinkLocal);//Exception if uncommented
+alert(implicitGlobalScope + "Is this not getting the implcitGlobalScope");//
+alert(window.implicitGlobalScope + "Is this not getting the implcitGlobalScope, tried with Window");//
+alert(globalScope + "Global defined VAR");
+
 </script>
 </head>
 <body onload="scopeTest()">
-<h1>Hello World</h1>
-<p>Work in Progress.</p>
+
 <Input type ="text" id="fname" name="firstName"/>
 <Input id="button" type="Submit" Value="Submit" />
 

@@ -5,13 +5,19 @@
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 <script>
 
-    $(document).ready(function () {
-        var closureReturned = AddToSeed(2);
+    $(function () {
+        var foo = 2;
+        $('button').click(
+        function () {
+            alert(this.id + "Here it is the button");
+            AddToSeed(foo);
+        });
+       // var closureReturned = AddToSeed(2);
        // closureReturned(10);
        // closureReturned(10);
     });
+    
    
-   // $("button").click (user.clickHandler);
 
 
 

@@ -5,23 +5,18 @@
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 <script>
 
-$(document).ready(function () {
-   var user = {
-       data:[
-        {name:"T. Woods", age:37},
-        {name:"P. Mickelson", age:43}
-        ],
-       clickHandler:function () {
-            var randomNum = ((Math.random () * 2 | 0) + 1) - 1; 
-            console.log (this.data[0].name);
-       }
-    }
-   user.clickHandler();
+    $(document).ready(function () {
+        var closureReturned = AddToSeed(2);
+       // closureReturned(10);
+       // closureReturned(10);
+    });
+   
    // $("button").click (user.clickHandler);
-});
+
 
 
 </script>
+    <script src="Closure.js"></script>
 
    
    
@@ -29,7 +24,7 @@ $(document).ready(function () {
 
 
 <body>
-<button id="button" type="Submit" value="Submit" >Submit</button>
+<button id="button" type="Submit" value="Add" >Submit</button>
 
 </body>
 </html>

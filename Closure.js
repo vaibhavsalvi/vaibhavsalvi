@@ -1,11 +1,12 @@
 function AddToSeed( seedValue)
 {
-     alert(this + " - This in context function ");
-     var returnFunction=function closure(addValue)
-     {
-         alert(this + " - This in closure ");
-         seedValue = parseInt(seedValue) + parseInt(addValue);  // Change Value Context and at each run it will have a different value
-         alert(" New Seed Value now is " + seedValue);
-     }
-     return returnFunction;
+    alert(this + "In AddToSeed");
+    //alert(seedValue + " - SeedValue ");
+    return function closure(addValue) {
+        alert(this + "In Closure");
+       // alert(addValue + " - Adding to Seed");
+        seedValue = parseInt(seedValue) + parseInt(addValue);  // SeedValue will be changed in each subsequent closure invocation, unless it is not a self executing immediate function
+        //alert(" New Seed Value now is " + seedValue);
+    };
+     
 }

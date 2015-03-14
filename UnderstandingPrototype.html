@@ -1,0 +1,29 @@
+<html>
+<head>
+	<script  >
+        function Animal(name) {
+            // Instance properties can be set on each instance of the class
+            this.name = name;
+            console.log("this  " + this + " name " + this.name);
+        }
+    function Cat(name) {
+        // Instance properties can be set on each instance of the class
+        Animal.call(this,name);
+}
+
+// Prototype properties are shared across all instances of the class. However, they can still be overwritten on a per-instance basis with the `this` keyword.
+Animal.prototype.speak = function() {
+    console.log("My name is " + this.name + " From Prototype");
+};//
+
+var animal =  new Animal('Monty');
+animal.speak(); // My name is Monty
+
+Cat.prototype = new Animal('PROTO-CAT');
+
+var cat = new Cat('ACTUAL_CAT');
+cat.speak();
+	</script>
+</head>
+<body onload="Animal('Great')"></body>
+</html>

@@ -1,0 +1,32 @@
+<html>
+<head>
+	<script  >
+      
+         function Animal(_name) {
+            
+             var name = _name; // name is declared var, is set on Global Object
+             this.color = "blue";
+             console.log("this in function  " + this + " this name " + this.name + " var name " + name + " this color" + this.color); //this.name when called by Global Object will have value
+             return function makeSound() {
+                 //this in clousre is  Window object
+                 console.log("this in closure " + this + " this name " + this.name + " var name " + name + " this color" + this.color);
+             }
+         }
+        
+    
+
+
+
+
+                 var windowObject =  Animal("Lion");
+                 windowObject();
+                 var newObject = new Animal("Lion");
+                 newObject();
+        
+  
+
+
+	</script>
+</head>
+<body ></body>
+</html>

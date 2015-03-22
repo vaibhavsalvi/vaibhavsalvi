@@ -10,7 +10,8 @@
         $('button').click(
         function () {
             alert(this.id + "Here it is the button");
-            AddToSeed(foo);
+            AddToSeed($("#txt").val());
+            
         });
        // var closureReturned = AddToSeed(2);
        // closureReturned(10);
@@ -30,6 +31,7 @@
 
 
 <body>
+    <input type="text" id="txt"/>
 <button id="button" type="Submit" value="Add" >Submit</button>
 
 </body>

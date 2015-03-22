@@ -1,0 +1,33 @@
+<html>
+<head>
+	<script  >
+      
+         var objectVariable=function Animal(_name) {
+            // Instance properties can be set on each instance of the class
+             var name = _name;
+            this.color = "blue";
+            console.log("this in function  " + this + " this name " + this.name + " var name " + name  + " this color" + this.color);
+            return function makeSound() {                
+                console.log("this in closure " + this + " this name " + this.name + " var name " + name + " this color" + this.color);
+            }
+         }
+        
+    
+
+        //Note that we cannot instantiate Animal directly
+
+
+                 var windowObject = objectVariable("Lion");
+        
+                 windowObject();
+                 var newObject = new objectVariable("Lion");
+        
+                 newObject();
+       
+  
+
+
+	</script>
+</head>
+<body ></body>
+</html>

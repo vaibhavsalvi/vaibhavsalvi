@@ -1,0 +1,48 @@
+<html>
+<head>
+	<script  >
+      
+        var Animal = function Animal(_name) {
+            // Instance properties can be set on each instance of the class
+            var name = _name;
+            var color = "yellow";
+            var positionAt = 0;
+            var x = { "key": "value" };
+            return {
+                walk: function (moveBy) { positionAt = 2 },
+                run: function (moveBy) {  positionAt = 14 },
+                getPosition: function(){return positionAt}
+            };
+
+        };
+         
+        
+    
+
+        //Note that we cannot instantiate Animal directly
+
+
+               
+                 var lion = new Animal("Lion");                         
+                 lion.run(4);
+                 console.log(lion.getPosition());
+                 lion.walk(4);
+                 console.log(lion.getPosition());
+
+                 var rat = new Animal("Rat");                 
+                 console.log(rat.getPosition());
+                
+
+                 
+
+                 //var snail = new Animal("Snail");
+                 //console.log(lion.run(4).positionAt);
+                 //console.log(lion.walk(10).positionAt);
+       
+  
+
+
+	</script>
+</head>
+<body ></body>
+</html>

@@ -10,6 +10,8 @@ function AddToSeed( seedValue)
    //// }  Uncomment, to show non IMEI
     // }(seedValue);
     // var get1Value = 
+	alert(this);
+	alert(foo);
     var getClosure=Converter(seedValue);
     alert(getClosure().x);
     alert(getClosure().y);

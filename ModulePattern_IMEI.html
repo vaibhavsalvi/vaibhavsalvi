@@ -16,7 +16,13 @@
 
         }());
          
-        
+        // Prototype properties are shared across all instances of the class. However, they can still be overwritten on a per-instance basis with the `this` keyword.
+        Animal.prototype.speak = function () {
+            console.log("My name is " + this.name);
+        };
+
+        var animal = new Animal('Monty');
+        animal.speak(); // My name is Monty
     
 
         //Note that we cannot instantiate Animal directly

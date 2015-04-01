@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+  <head>
+   <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+  <script src="js/libs/handlebars-v1.3.0.js"></script>
+  <script src="http://builds.emberjs.com/tags/v1.8.1/ember.js"></script>
+  <script src="http://builds.emberjs.com/tags/v1.0.0-beta.11/ember-data.js"></script>
+  
+    <meta charset="utf-8">
+    <title>Ember.js • TodoMVC</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+  <script type="text/x-handlebars" data-template-name="todos">
+
+  <section id="todoapp">
+    <header id="header">
+      <h1>todos</h1>
+     {{input
+  type="text"
+  id="new-todo"
+  placeholder="What needs to be done?"
+  value=newTitle
+  action="createTodo"}}
+    </header>
+
+      <section id="main">
+        <ul id="todo-list">
+        {{#each todo in model itemController="todo"}}
+  <li {{bind-attr class="todo.isCompleted:completed"}}>
+    {{input type="checkbox" checked=todo.isCompleted class="toggle"}}
+    <label>{{todo.title}}</label><button class="destroy"></button>
+  </li>
+{{/each}}
+        </ul>
+
+        <input type="checkbox" id="toggle-all">
+      </section>
+
+      <footer id="footer">
+        <span id="todo-count">
+          <strong>2</strong> todos left</span>
+        <ul id="filters">
+          <li>
+            <a href="all" class="selected">All</a>
+          </li>
+          <li>
+            <a href="active">Active</a>
+          </li>
+          <li>
+            <a href="completed">Completed</a>
+          </li>
+        </ul>
+
+        <button id="clear-completed">
+          Clear completed (1)
+        </button>
+      </footer>
+  </section>
+
+  <footer id="info">
+    <p>Double-click to edit a todo</p>
+  </footer>
+  
+  </script>
+	 <!-- ... Ember.js and other javascript dependencies ... -->
+  <script src="js/application.js"></script>
+ <script src="js/router.js"></script>
+   <script src="js/models/todo.js"></script>
+   <script src="js/controllers/todos_controller.js"></script>
+    <script src="js/controllers/todo_controller.js"></script>
+  </body>
+</html>

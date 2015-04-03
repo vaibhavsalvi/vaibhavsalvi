@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<script>
+             var i='hello';
+			 console.log(i);
+			 console.log(this);
+			 console.log(this.i);
+			 
+			 function getValueDirect()
+			 {
+			      return 1;
+			 }
+			 console.log(typeof getValueDirect); //What will this return?
+			 console.log(getValueDirect()); //What will this return?
+			 
+			 var getValue= function()
+			 {
+			      return 1;
+			 }			 
+			 console.log(getValue); //What will this return
+			 console.log(getValue()); //What will this return
+			 
+			 var getValue= function getValue()
+			 {
+			      return 1;
+			 }
+			 console.log(typeof getValue); //What will this return?
+			 console.log(getValue()); //What will this return?
+			 
+			 
+			 
+			 var add= function(a,b)
+			 {
+			      result= parseInt(a) + parseInt(b);
+			 }			 
+			 var valueObject1= new add(2,2);
+			 console.log(valueObject1); //What will this return
+			 //console.log(valueObject1()); //**** What will this return, is it not a function
+			 
+			 var add= function(a,b)
+			 {			      
+			      result= parseInt(a) + parseInt(b);
+			 }			 
+			 var valueObject1= new add(2,2);
+			 console.log(valueObject1); //What will this return
+			 console.log(valueObject1.result); //What the hell is this? Where is the result set
+			 
+			  var add= function(a,b)
+			 {			      
+			      this.result= parseInt(a) + parseInt(b);
+			 }			 
+			 var valueObject1= new add(2,2);
+			 console.log(valueObject1); //What will this return
+			 console.log(valueObject1.result); //View it in the Developer tools in Local variables
+			 var valueObject2= new add(6,6);
+			 console.log(valueObject2); //What will this return
+			 console.log(valueObject2.result); //View it in the Developer tools in Local variables
+			 
+			 //Object Literal Syntax
+			 var add= {
+					 anotherValue:2,
+					 result:function(a,b){
+							  console.log(this);
+							  //return a+b+anotherValue;   //**** Will it work?
+							  return a+b+this.anotherValue;
+			 }
+			 }			
+			 console.log(add.result(2,4)); // You are now invoking it
+			 ///console.log(add.result(2,5)()); Does it make any sense
+			 
+			 
+			 function Animal(_name) {            
+             var myname = _name; 				// name is declared var, is set on Global Object
+             this.color = "Yellow";           // what is this?
+             console.log("this in function  " + this + " this name " + this.myname + " var name " + myname + " this color" + this.color); //this.myname when called by Global Object will have value
+					 return function speak() {
+						 //this is your Closure
+						 console.log("Speaking --- This in closure " + this + " this name " + this.myname + " var name " + myname + " this color" + this.color);
+					 }
+			 }
+             var animalObject =  Animal("Lion"); 
+			 console.log('Name is' + animalObject.myname);
+			 console.log('Color is' + animalObject.color);
+             animalObject();                     //Speak Called 
+			 var animalObject2 =  Animal("Giraffe");  			
+             animalObject2();    			 
+			 animalObject();   //*****Call again and check context
+             var newAnimalObject = new Animal("Lion");
+             console.log('Name is' + newAnimalObject.myname);
+			 console.log('Color is' + newAnimalObject.color);
+             newAnimalObject();                     //Speak Called 
+			 
+			 
+			 
+			 var objectVariable=function Animal(_name) {            
+             var myname = _name;
+             this.color = "blue";
+             console.log("this in function  " + this + " this name " + this.myname + " var name " + myname  + " this color" + this.color);
+						 return function makeSound() {                
+							console.log("this in closure " + this + " this name " + this.myname + " var name " + myname + " this color" + this.color);
+						}
+            }
+             var lionObject = objectVariable("Lion");
+			 console.log('Name is' + lionObject.myname);
+			 console.log('Color is' + lionObject.color);
+             lionObject();
+			 var giraffeObject = objectVariable("Giraffe");			
+             giraffeObject();
+			 lionObject();
+             var newObject = new objectVariable("Lion");
+			 console.log('Name is' + newObject.myname);
+			 console.log('Color is' + newObject.color);
+             newObject()
+			 
+			 
+			 
+			 var objectVariable=function Animal(_name) { 			 	 
+             var myname = _name;
+             this.color = "blue";
+             console.log("this in function  " + this + " this name " + this.myname + " var name " + myname  + " this color" + this.color);
+						 return resultObject = {                
+							 speakFromClosure: function(){
+							 return myname;
+							}
+						}
+            }
+             var windowObject = objectVariable("Lion");
+			 console.log('Name is' + windowObject.speakFromClosure());			
+             var windowObject = objectVariable("Giraffe");
+			 console.log('Name is' + windowObject.speakFromClosure());
+			 
+			 
+			 
+			 var objectVariable=function Animal(_name) { 			 	 
+             var myname = _name;
+             this.color = "blue";
+			 var initialCount=0;
+             console.log("this in function  " + this + " this name " + this.myname + " var name " + myname  + " this color" + this.color);
+						 return resultObject = {                
+							 speakFromClosure: function(counter){
+							 initialCount=initialCount+counter;
+							 return initialCount;
+							}
+						}
+            }
+             var windowObject = objectVariable("Lion");
+			 for (i=0;i<10;i++)
+			 {
+					var result=windowObject.speakFromClosure(i);
+			 }			
+			 console.log(result); // Note that result is available outside --- Variable Hoisting
+             var windowObject = objectVariable("Giraffe");
+			 console.log('Name is' + windowObject.speakFromClosure());
+			 
+			 
+			 
+			 
+			 
+			 var objectVariable=(function Animal(_name) {            
+             var myname = _name;
+             this.color = "blue";
+             console.log("this in function  " + this + " this name " + this.myname + " var name " + myname  + " this color" + this.color);
+						 return  {      
+						    speakFromClosure: function(){
+							console.log("this in closure " + this + " this name " + this.myname + " var name " + myname + " this color" + this.color)
+							}
+						};
+            }('Lion'));
+			 //var windowObject = objectVariable("Lion"); // *****This cannot be done
+			 objectVariable.speakFromClosure();
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+	</script>
+</head>
+
+
+<body>
+<input type="text" id="txt"/>
+<button id="button" type="Submit" value="Add" >Submit</button>
+
+</body>
+</html>

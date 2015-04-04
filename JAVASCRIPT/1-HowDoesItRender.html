@@ -17,14 +17,20 @@
 			 
 			 var getValue= function()
 			 {
+			      var i=1;
+				  console.log(i);
+				  console.log(this.i); //What is this referring to where is it getting the value from?
 			      return 1;
 			 }			 
-			 console.log(getValue); //What will this return
+			 console.log(typeof getValue); //What will this return
 			 console.log(getValue()); //What will this return
 			 
 			 var getValue= function getValue()
-			 {
-			      return 1;
+			 { 
+			      var i=1;
+				  console.log(i);
+				  console.log(this.i); //What is this referring to where is it getting the value from?
+			      return i;
 			 }
 			 console.log(typeof getValue); //What will this return?
 			 console.log(getValue()); //What will this return?
@@ -36,6 +42,7 @@
 			      result= parseInt(a) + parseInt(b);
 			 }			 
 			 var valueObject1= new add(2,2);
+			 console.log(typeof valueObject1); //What will this return
 			 console.log(valueObject1); //What will this return
 			 //console.log(valueObject1()); //**** What will this return, is it not a function
 			 
@@ -70,14 +77,14 @@
 			 console.log(add.result(2,4)); // You are now invoking it
 			 ///console.log(add.result(2,5)()); Does it make any sense
 			 
-			 
+			 //No Namespace access to function, Return a function via Closure
 			 function Animal(_name) {            
              var myname = _name; 				// name is declared var, is set on Global Object
              this.color = "Yellow";           // what is this?
-             console.log("this in function  " + this + " this name " + this.myname + " var name " + myname + " this color" + this.color); //this.myname when called by Global Object will have value
+             console.log("This in function = " + this + " This name = " + this.myname + " var name = " + myname + " this color = " + this.color); 
 					 return function speak() {
 						 //this is your Closure
-						 console.log("Speaking --- This in closure " + this + " this name " + this.myname + " var name " + myname + " this color" + this.color);
+						 console.log("Speaking --- This in closure = " + this + " This name = " + this.myname + " var name = " + myname + " this color = " + this.color);
 					 }
 			 }
              var animalObject =  Animal("Lion"); 
@@ -93,13 +100,13 @@
              newAnimalObject();                     //Speak Called 
 			 
 			 
-			 
+			 //Namespace access to function, Return a function via Closure
 			 var objectVariable=function Animal(_name) {            
              var myname = _name;
              this.color = "blue";
-             console.log("this in function  " + this + " this name " + this.myname + " var name " + myname  + " this color" + this.color);
+             console.log("this in function  " + this + " this name " + this.myname + " var name " + myname  + " this color " + this.color);
 						 return function makeSound() {                
-							console.log("this in closure " + this + " this name " + this.myname + " var name " + myname + " this color" + this.color);
+							console.log("this in closure " + this + " this name " + this.myname + " var name " + myname + " this color " + this.color);
 						}
             }
              var lionObject = objectVariable("Lion");
@@ -115,24 +122,64 @@
              newObject()
 			 
 			 
-			 
+			 //return a object rather than a function, making private and public scoped method variables.
 			 var objectVariable=function Animal(_name) { 			 	 
              var myname = _name;
              this.color = "blue";
-             console.log("this in function  " + this + " this name " + this.myname + " var name " + myname  + " this color" + this.color);
+             console.log("this in function  " + this + " this name " + this.myname + " var name " + myname  + " this color " + this.color);
 						 return resultObject = {                
 							 speakFromClosure: function(){
+							 console.log("this in closure " + this + " this name " + this.myname + " var name " + myname + " this color " + this.color);
 							 return myname;
 							}
 						}
             }
              var windowObject = objectVariable("Lion");
-			 console.log('Name is' + windowObject.speakFromClosure());			
+			 console.log('Name is' + windowObject.speakFromClosure());		
+             var getResultFromBind=	windowObject.speakFromClosure.bind(windowObject);
+			 var returnedValue=getResultFromBind();
              var windowObject = objectVariable("Giraffe");
 			 console.log('Name is' + windowObject.speakFromClosure());
 			 
+			 // Add properties to Object  at runtime and get the value via closure because of bind.
+			 var objectVariable=function Animal(_name) { 			 	 
+             this.myname = _name;
+             this.color = "blue";
+             console.log("this in function  " + this + " this name " + this.myname + " this color " + this.color);
+						 return resultObject = {                
+							 speakFromClosure: function(){
+							 console.log("this in closure " + this + " this name " + this.myname +  " this color " + this.color);
+							 return this.myname;
+							}
+						}
+            }
+             var actualObject = new objectVariable("Lion");
+			 actualObject.myname="A different Lion";
+			 actualObject.color=" WHITE ";			 
+			 var getResultFromBind=	actualObject.speakFromClosure.bind(actualObject);
+			 var returnedValue=getResultFromBind();
 			 
 			 
+			 // Add properties to Object  at runtime and get the value via closure because of calll\.
+			 var objectVariable=function Animal(_name) { 			 	 
+             this.myname = _name;
+             this.color = "blue";
+             console.log("this in function  " + this + " this name " + this.myname + " this color " + this.color);
+						 return resultObject = {                
+							 speakFromClosure: function(){
+							 console.log("this in closure " + this + " this name " + this.myname +  " this color " + this.color);
+							 return this.myname;
+							}
+						}
+            }
+             var actualObject = new objectVariable("Lion");
+			 actualObject.myname="A different Lion";
+			 actualObject.color=" WHITE ";			 
+			 var getResultFromBind=	actualObject.speakFromClosure.call(actualObject);
+			 
+			 
+			 
+			 //Closure in a loop
 			 var objectVariable=function Animal(_name) { 			 	 
              var myname = _name;
              this.color = "blue";
@@ -157,7 +204,7 @@
 			 
 			 
 			 
-			 
+			 //IMEI, Module Pattern
 			 var objectVariable=(function Animal(_name) {            
              var myname = _name;
              this.color = "blue";

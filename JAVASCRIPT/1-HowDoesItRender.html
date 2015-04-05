@@ -151,8 +151,10 @@
 							 console.log("this in closure " + this + " this name " + this.myname +  " this color " + this.color);
 							 return this.myname;
 							}
+							
 						}
             }
+			  
              var actualObject = new objectVariable("Lion");
 			 actualObject.myname="A different Lion";
 			 actualObject.color=" WHITE ";			 
@@ -172,6 +174,7 @@
 							}
 						}
             }
+			
              var actualObject = new objectVariable("Lion");
 			 actualObject.myname="A different Lion";
 			 actualObject.color=" WHITE ";			 
@@ -192,8 +195,11 @@
 							}
 						}
             }
+			
+			 
              var windowObject = objectVariable("Lion");
-			 for (i=0;i<10;i++)
+			
+			 for (i=0;i<2;i++)
 			 {
 					var result=windowObject.speakFromClosure(i);
 			 }			
@@ -215,9 +221,45 @@
 							}
 						};
             }('Lion'));
+			
 			 //var windowObject = objectVariable("Lion"); // *****This cannot be done
 			 objectVariable.speakFromClosure();
 			 
+			 
+			 
+			 var objectVariable=function Animal(_name) { 			 	 
+             this.myname = _name;
+             this.color = "blue";
+			 }
+			 objectVariable.prototype.Sleep=function(){ 
+			 console.log(this.myname + ' Is Sleeping');
+			 return 'Sleeping';
+			 };
+			 
+			 var lion=new objectVariable('Lion');			 
+			 lion.move=function(){ 
+			 console.log(this.myname + ' Is Moving');
+			 return 'Moving';
+			 };
+			 lion.Sleep();
+			 lion.move();
+			 var snake=new objectVariable('Snake');
+			 snake.move=function(){ 
+			 console.log(this.myname + ' Is Moving');
+			 return 'Moving';
+			 };
+			 snake.Sleep();
+			 snake.move();
+			
+			 var objectVariable=function Animal(_name) { 			 	 
+             this.myname = _name;
+             this.color = "blue";
+			 }
+			 objectVariable.prototype.u=1;
+			 var x= objectVariable;
+			 alert(x.u);
+			 var y= new objectVariable;
+			 alert(y.u);
 			 
 			 
 			 

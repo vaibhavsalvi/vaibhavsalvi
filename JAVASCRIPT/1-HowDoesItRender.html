@@ -10,6 +10,9 @@
 			 
 			 function getValueDirect()
 			 {
+			      var i=1;
+				  console.log(i);
+				  console.log(this.i); //What is this referring to where is it getting the value from?
 			      return 1;
 			 }
 			 console.log(typeof getValueDirect); //What will this return?
@@ -36,21 +39,12 @@
 			 console.log(getValue()); //What will this return?
 			 
 			 
-			 
-			 var add= function(a,b)
-			 {
-			      result= parseInt(a) + parseInt(b);
-			 }			 
-			 var valueObject1= new add(2,2);
-			 console.log(typeof valueObject1); //What will this return
-			 console.log(valueObject1); //What will this return
-			 //console.log(valueObject1()); //**** What will this return, is it not a function
-			 
 			 var add= function(a,b)
 			 {			      
 			      result= parseInt(a) + parseInt(b);
 			 }			 
 			 var valueObject1= new add(2,2);
+			 console.log(typeof valueObject1); //What will this return
 			 console.log(valueObject1); //What will this return
 			 console.log(valueObject1.result); //What the hell is this? Where is the result set
 			 
@@ -64,6 +58,8 @@
 			 var valueObject2= new add(6,6);
 			 console.log(valueObject2); //What will this return
 			 console.log(valueObject2.result); //View it in the Developer tools in Local variables
+			 
+			 ///************ GO TO CUT HERE TO HowDoesItRender
 			 
 			 //Object Literal Syntax
 			 var add= {
@@ -262,7 +258,20 @@
 			 
 			 
 			 
-			 
+			 ///Comments CallBack Function and function as parameter
+
+var callbackFunction= function(){
+ console.log('callbackFunction function called');
+}
+
+var func=callbackFunction;
+call(func);
+
+function call( func)
+{
+console.log('callbackFunction function passed');
+   func();
+}
 			 
 			 
 			 

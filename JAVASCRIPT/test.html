@@ -32,7 +32,7 @@ alert (typeof getTheFunctionAsObject)
 alert(getTheFunctionAsObject.thisVariable);
 alert(getTheFunctionAsObject.varVariable);
 
-//CUT HERE TO HowDoesItRender
+//***** CUT HERE TO HowDoesItRender
 
 var functionDeclaredWithThis= function toBeCalledFunctionWithThis(){var thisVariable='hello';var varVariable='hello'; this.publicFunction=function(){alert('hurray !!!!')}; console.log('To Be called function')};
 var getTheFunctionInVarWithThis= new functionDeclaredWithThis();
@@ -61,20 +61,7 @@ var getTheFunctionInVarWithThisWithPrivateVariable= new functionDeclaredWithThis
 
 
 
-///Comments CallBack Function and function as parameter
 
-var callbackFunction= function(){
- console.log('callbackFunction function called');
-}
-
-var func=callbackFunction;
-call(func);
-
-function call( func)
-{
-console.log('callbackFunction function passed');
-   func();
-}
 
 
 ///

@@ -1,0 +1,84 @@
+<html>
+<script>
+
+///
+
+var functionDeclared= function toBeCalledFunction(){var thisVariable='hello';var varVariable='hello'; var publicFunction=function(){alert('hurray !!!!')}; console.log('To Be called function')};
+functionDeclared();
+alert (typeof functionDeclared);
+//alert(thisVariable);
+//alert(varVariable);
+alert(functionDeclared.thisVariable);
+alert(functionDeclared.varVariable);
+alert(functionDeclared.publicFunction);
+var getTheFunctionInVar= functionDeclared;
+//var resultOfFunction=getTheFunctionInVar();
+//alert(resultOfFunction.thisVariable);
+//alert(resultOfFunction.varVariable);
+//alert(resultOfFunction.publicFunction);
+alert(getTheFunctionInVar.thisVariable);
+alert(getTheFunctionInVar.varVariable);
+alert(getTheFunctionInVar.publicFunction);
+
+
+//var getTheFunctionAsObject=  toBeCalledFunction();
+//var getTheFunctionAsObject= new toBeCalledFunction();
+//alert (typeof getTheFunctionAsObject)
+//alert(this.thisVariable);
+//alert(this.varVariable);
+
+var getTheFunctionAsObject= new functionDeclared();
+alert (typeof getTheFunctionAsObject)
+alert(getTheFunctionAsObject.thisVariable);
+alert(getTheFunctionAsObject.varVariable);
+
+//CUT HERE TO HowDoesItRender
+
+var functionDeclaredWithThis= function toBeCalledFunctionWithThis(){var thisVariable='hello';var varVariable='hello'; this.publicFunction=function(){alert('hurray !!!!')}; console.log('To Be called function')};
+var getTheFunctionInVarWithThis= new functionDeclaredWithThis();
+((getTheFunctionInVarWithThis.publicFunction)());
+
+var functionDeclaredWithThisWithPrivateVariable= function toBeCalledFunctionWithThisWithPrivateVariable(){var thisVariable='hello';var varVariable='hello'; this.publicFunction=function(){alert(this.thisVariable)}; console.log('To Be called function')};
+var getTheFunctionInVarWithThisWithPrivateVariable= new functionDeclaredWithThisWithPrivateVariable();
+((getTheFunctionInVarWithThisWithPrivateVariable.publicFunction)());
+
+var functionDeclaredWithThisWithPrivateVariable= function toBeCalledFunctionWithThisWithPrivateVariable(){this.thisVariable='hello';var varVariable='hello'; this.publicFunction=function(){alert(this.thisVariable)}; console.log('To Be called function')};
+var getTheFunctionInVarWithThisWithPrivateVariable= new functionDeclaredWithThisWithPrivateVariable();
+((getTheFunctionInVarWithThisWithPrivateVariable.publicFunction)());
+
+//var functionDeclaredWithThisWithPrivateVariable= function toBeCalledFunctionWithThisWithPrivateVariable(){this.thisVariableOnWindow='hello';var varVariable='hello'; this.publicFunction=function(){alert(this.thisVariableOnWindow)}; console.log('To Be called function')};
+//var getTheFunctionInVarWithThisWithPrivateVariable=  functionDeclaredWithThisWithPrivateVariable();
+//((getTheFunctionInVarWithThisWithPrivateVariable.publicFunction)());
+//alert(this.thisVariableOnWindow + 'I am on the window');
+
+//function toBeCalledFunctionWithThisWithPrivateVariable(){this.thisVariable='hello';var varVariableOnWindow='hello'; this.publicFunction=function(){alert(this.thisVariableOnWindow)}; console.log('To Be called function')};
+//alert(toBeCalledFunctionWithThisWithPrivateVariable.thisVariable);
+//alert(toBeCalledFunctionWithThisWithPrivateVariable.varVariableOnWindow);
+//var getTheFunctionInVarWithThisWithPrivateVariable=  toBeCalledFunctionWithThisWithPrivateVariable();
+//((getTheFunctionInVarWithThisWithPrivateVariable.publicFunction)());
+
+					
+
+
+
+///Comments CallBack Function and function as parameter
+
+var callbackFunction= function(){
+ console.log('callbackFunction function called');
+}
+
+var func=callbackFunction;
+call(func);
+
+function call( func)
+{
+console.log('callbackFunction function passed');
+   func();
+}
+
+
+///
+
+
+</script>
+</html>

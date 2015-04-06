@@ -1,0 +1,10 @@
+<html>
+<script>
+var callbackFunction= function(){
+ console.log('callbackFunction function called');
+}
+
+var func=callbackFunction;
+func();
+</script>
+</html>

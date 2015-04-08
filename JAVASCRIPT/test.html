@@ -38,7 +38,7 @@ var functionDeclaredWithThis= function toBeCalledFunctionWithThis(){var thisVari
 var getTheFunctionInVarWithThis= new functionDeclaredWithThis();
 ((getTheFunctionInVarWithThis.publicFunction)());
 
-var functionDeclaredWithThisWithPrivateVariable= function toBeCalledFunctionWithThisWithPrivateVariable(){var thisVariable='hello';var varVariable='hello'; this.publicFunction=function(){alert(this.thisVariable)}; console.log('To Be called function')};
+var functionDeclaredWithThisWithPrivateVariable= function toBeCalledFunctionWithThisWithPrivateVariable(){var thisVariable='hello';var varVariable='hello'; this.publicFunction=function(){alert(thisVariable)}; console.log('To Be called function')};
 var getTheFunctionInVarWithThisWithPrivateVariable= new functionDeclaredWithThisWithPrivateVariable();
 ((getTheFunctionInVarWithThisWithPrivateVariable.publicFunction)());
 

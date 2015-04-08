@@ -1,0 +1,33 @@
+<html>
+<head>
+<script>
+var NomuraLibrary={
+				   a:"a",
+      publicFunction:function foo()
+				   { 				      
+					  var b="b";
+					  var c="c";
+					  function bar()
+					  {
+						 var e="e";
+						 console.log(this.a);
+						 console.log(b);
+						 console.log(c);
+						 console.log(d);  	
+						 console.log(e);  				 
+					  }		  
+					  var d="d";
+					  bar();
+				   }				  
+				}
+NomuraLibrary.publicFunction();	  
+//console.log(a);
+//console.log(b);
+//console.log(c);
+//console.log(d);  	
+//console.log(e);  		 	
+ 	
+	   
+</script>
+</head>
+</html>

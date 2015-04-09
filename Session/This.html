@@ -1,0 +1,24 @@
+<html>
+<head>
+	<script  >
+      
+         function Animal(animalName,color) {
+            
+             var _name = animalName; 
+             var _color = color;
+             console.log("[THIS] in function  " + this + " name " + _name + "  color " + _color ); 
+             this._speak= function speak() {                 
+                 console.log("[THIS] in function  " + this + " name " + _name + "  color " + _color ); 
+             }
+         }
+        
+         var lionObject =  Animal("Lion","Yellow");
+		 console.log(lionObject);
+         //lionObject.speak();
+		 var newLionObject =  new Animal("Lion","Yellow");
+         console.log(newLionObject._speak());
+         
+	</script>
+</head>
+<body ></body>
+</html>
